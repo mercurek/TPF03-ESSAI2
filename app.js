@@ -68,7 +68,7 @@ nom: "Cappuccino",
 nblait: 1,
 nbsucre: 2,
 prix: 3.25,
-commandeur: "Dominique",
+commandeur: "Stéphane",
 }
 console.info(coffeeCappuccino);
 
@@ -78,7 +78,7 @@ nom: "Mocha",
 nblait: 1,
 nbsucre: 3,
 prix: 3.50,
-commandeur: "Dominique",
+commandeur: "Doris",
 }
 console.info(coffeeMocha);
 
