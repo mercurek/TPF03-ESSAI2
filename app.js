@@ -80,7 +80,7 @@ nbsucre: 3,
 prix: 3.50,
 commandeur: "Dominique",
 }
-console.info(coffeeLatte);
+console.info(coffeeMocha);
 
 
 //Création d'une nouvelle transaction
