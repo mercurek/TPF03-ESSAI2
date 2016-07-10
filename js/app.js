@@ -19,52 +19,77 @@ function terminerTransaction() {
 }
 
 //Code du TPF03
-//Création de cinq objets Coffee
+//Partie 1 - Création de cinq objets Coffee
 var coffeeColombien = {
 nom: "Colombien",
-nblait: 2,
-nbsucre: 3,
+nbLait: 2,
+nbSucre: 3,
 prix: 2.5,
-commandeur: "Alexis",
+nomCommandeur: "Alexis",
 }
 console.info(coffeeColombien);
 
 
 var coffeeMelangeMaison = {
 nom: "Mélange maison",
-nblait: 1,
-nbsucre: 1,
+nbLait: 1,
+nbSucre: 1,
 prix: 2,
-commandeur: "Guillaume",
+nomCommandeur: "Guillaume",
 }
 console.info(coffeeMelangeMaison);
 
 
 var coffeeLatte = {
 nom: "Latte",
-nblait: 2,
-nbsucre: 1,
+nbLait: 2,
+nbSucre: 1,
 prix: 2.75,
-commandeur: "Dominique",
+nomCommandeur: "Dominique",
 }
 console.info(coffeeLatte);
 
 
 var coffeeCappuccino = {
 nom: "Cappuccino",
-nblait: 1,
-nbsucre: 2,
+nbLait: 1,
+nbSucre: 2,
 prix: 3.25,
-commandeur: "Stéphane",
+nomCommandeur: "Stéphane",
 }
 console.info(coffeeCappuccino);
 
 
 var coffeeMocha = {
 nom: "Mocha",
-nblait: 1,
-nbsucre: 3,
-prix: 3.50,
-commandeur: "Doris",
+nbLait: 1,
+nbSucre: 3,
+prix: 3.5,
+nomCommandeur: "Doris",
 }
 console.info(coffeeMocha);
+
+
+//Partie 2 - Fonction « Constructeur »
+//Objets de type « Café »
+function Cafe (nom, nbLait, nbSucre, prix, nomCommandeur){
+	this.nom = nom;
+	this.nbLait = nbLait;
+	this.nbSucre = nbSucre;
+	this.prix = prix;
+	this.nomCommandeur = nomCommandeur;
+}
+ 
+var coffeeColombien = new Cafe("Colombien", 2, 3, 2.5, "Alexis");
+var coffeeMelangeMaison = new Cafe("Mélange maison", 1, 1, 2, "Guillaume");
+var coffeeLatte = new Cafe("Latte", 2, 1, 2.75, "Dominique");
+var coffeeCappuccino = new Cafe("Cappuccino", 1, 2, 3.25, "Stéphane");
+var coffeeMocha = new Cafe("Mocha", 1, 3, 3.5, "Doris");
+
+//Objets de type « Transaction »
+var liste = [];
+
+function Transaction (nomInitiateur){
+    liste = []; //0 à plusieurs commandes de cafés
+
+}
