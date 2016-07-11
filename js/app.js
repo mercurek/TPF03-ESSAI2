@@ -101,24 +101,18 @@ function Transaction (nomInitiateur){  //On est obligé de savoir qui a fait la 
     this.listeCommande = []; //0 à plusieurs commandes de cafés
     this.nomInitiateur = nomInitiateur;
     this.debutTransaction = new Date(); //Date = un objet fourni par JS... donc new Date donne la date actuelle sur le poste client
-    
-    
+    this.historique = [];
 
-    //Fonction ajouter un cafe
+    //Fonction ajouter un cafe et ajouter le cafe dans un historique
     this.ajouterCafe = function(cafe){//Nouvelle méthode à l'objet
         this.listeCommande.push(cafe); //Le this permet d'aller chercher les propriétés/méthodes
+        this.historique.push(cafe);
     }
 
     //Fonction commander un cafe
     this.lecturePremierCafe = function (){ //Fonction anonyme
         var cafe = this.listeCommande.shift();
         return cafe;
-    }
-
-    //Fonction afficher historiqueCommande
-    this.historiqueCommande = function(){
-        var historique = this.historiqueCommande = []; 
-        this.historiqueCommande = [];
     }
 
     //Fonction finTransaction
