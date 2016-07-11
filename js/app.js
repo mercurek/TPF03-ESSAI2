@@ -19,7 +19,7 @@ function terminerTransaction() {
 }
 
 //Code du TPF03
-//Partie 1 - Création de cinq objets Coffee
+//Partie 1 - Création de cinq objets Coffee (fonction littérale)
 var coffeeColombien = {
 nom: "Colombien",
 nbLait: 2,
@@ -72,6 +72,15 @@ console.info(coffeeMocha);
 
 //Partie 2 - Fonction « Constructeur »
 //Objets de type « Café »
+function afficheCafe(cafe) {
+    console.info("Nom: " + cafe.nom);
+    console.info("nbLait: " + cafe.nbLait);
+    console.info("nbSucre: " + cafe.nbSucre);
+    console.info("prix: " + cafe.prix);
+    console.info("nomCommandeur:" + cafe.nomCommandeur)
+    console.info("--------------------------")
+}
+
 function Cafe (nom, nbLait, nbSucre, prix, nomCommandeur){
 	this.nom = nom;
 	this.nbLait = nbLait;
@@ -86,10 +95,42 @@ var coffeeLatte = new Cafe("Latte", 2, 1, 2.75, "Dominique");
 var coffeeCappuccino = new Cafe("Cappuccino", 1, 2, 3.25, "Stéphane");
 var coffeeMocha = new Cafe("Mocha", 1, 3, 3.5, "Doris");
 
+
 //Objets de type « Transaction »
-var liste = [];
+function Transaction (nomInitiateur){  //On est obligé de savoir qui a fait la nouvelle transaction
+    this.listeCommande = []; //0 à plusieurs commandes de cafés
+    this.nomInitiateur = nomInitiateur;
+    this.debutTransaction = new Date(); //Date = un objet fourni par JS... donc new Date donne la date actuelle sur le poste client
+    
+    
 
-function Transaction (nomInitiateur){
-    liste = []; //0 à plusieurs commandes de cafés
+    //Fonction ajouter un cafe
+    this.ajouterCafe = function(cafe){//Nouvelle méthode à l'objet
+        this.listeCommande.push(cafe); //Le this permet d'aller chercher les propriétés/méthodes
+    }
 
+    //Fonction commander un cafe
+    this.lecturePremierCafe = function (){ //Fonction anonyme
+        var cafe = this.listeCommande.shift();
+        return cafe;
+    }
+
+    //Fonction afficher historiqueCommande
+    this.historiqueCommande = function(){
+        var historique = this.historiqueCommande = []; 
+        this.historiqueCommande = [];
+    }
+
+    //Fonction finTransaction
+    this.finTransaction = function(){
+        this.endTransaction = new Date();
+    }
 }
+
+//Création d'une transaction et ajout d'une commande
+var t1 = new Transaction("Dominique"); //Dominique est l'initiatrice et j'ajoute d'autres cafés dans mon array
+t1.ajouterCafe(new Cafe("Colombien", 2, 3, 2.5, "Alexis"));
+t1.ajouterCafe(new Cafe("Mélange maison", 1, 1, 2, "Guillaume"));
+t1.ajouterCafe(new Cafe("Latte", 2, 1, 2.75, "Dominique"));
+t1.ajouterCafe(new Cafe("Cappuccino", 1, 2, 3.25, "Stéphane"));
+t1.ajouterCafe(new Cafe("Mocha", 1, 3, 3.5, "Doris"));
