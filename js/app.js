@@ -5,12 +5,16 @@ function nouvelleTransaction(){
     liste = [];
 }
 
-function commanderCafe(nom){
-    liste.push(nom);
+function commanderCafe(nomDuCafe){ //tu ajoutes un paramètres (c'est commme une variable locale)
+    liste.push(nomDuCafe); //ajout un cafe
 }
 
+//commanderCafe("cafe 1")
+//commanderCafe("cafe 2")
+//commanderCafe("cafe 3")
+
 function lecturePremierCafe(){
-    var premierCafe = liste.shift();
+    var premierCafe = liste.shift(); // retourne une valeur et la supprime ensuite
     return premierCafe;
 }
 
@@ -101,30 +105,32 @@ function Transaction (nomInitiateur){  //On est obligé de savoir qui a fait la 
     this.listeCommande = []; //0 à plusieurs commandes de cafés
     this.nomInitiateur = nomInitiateur;
     this.debutTransaction = new Date(); //Date = un objet fourni par JS... donc new Date donne la date actuelle sur le poste client
+    this.endTransaction = null;
     this.historique = [];
 
     //Fonction ajouter un cafe et ajouter le cafe dans un historique
     this.ajouterCafe = function(cafe){//Nouvelle méthode à l'objet
         this.listeCommande.push(cafe); //Le this permet d'aller chercher les propriétés/méthodes
-        this.historique.push(cafe);
     }
 
     //Fonction commander un cafe
     this.lecturePremierCafe = function (){ //Fonction anonyme
         var cafe = this.listeCommande.shift();
+        this.historique.push(cafe);
         return cafe;
     }
 
     //Fonction finTransaction
     this.finTransaction = function(){
         this.endTransaction = new Date();
+        this.listeCommande = [];
     }
 }
 
 //Création d'une transaction et ajout d'une commande
-var t1 = new Transaction("Dominique"); //Dominique est l'initiatrice et j'ajoute d'autres cafés dans mon array
-t1.ajouterCafe(new Cafe("Colombien", 2, 3, 2.5, "Alexis"));
-t1.ajouterCafe(new Cafe("Mélange maison", 1, 1, 2, "Guillaume"));
-t1.ajouterCafe(new Cafe("Latte", 2, 1, 2.75, "Dominique"));
-t1.ajouterCafe(new Cafe("Cappuccino", 1, 2, 3.25, "Stéphane"));
-t1.ajouterCafe(new Cafe("Mocha", 1, 3, 3.5, "Doris"));
+//var t1 = new Transaction("Dominique"); //Dominique est l'initiatrice et j'ajoute d'autres cafés dans mon array
+//t1.ajouterCafe(new Cafe("Colombien", 2, 3, 2.5, "Alexis"));
+//t1.ajouterCafe(new Cafe("Mélange maison", 1, 1, 2, "Guillaume"));
+//t1.ajouterCafe(new Cafe("Latte", 2, 1, 2.75, "Dominique"));
+//t1.ajouterCafe(new Cafe("Cappuccino", 1, 2, 3.25, "Stéphane"));
+//t1.ajouterCafe(new Cafe("Mocha", 1, 3, 3.5, "Doris"));
